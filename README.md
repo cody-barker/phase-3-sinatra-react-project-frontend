@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### planning
+
+-This app has a single page that renders a table with the 1st farm in the db by default
+-A dropdown where the farm name and location is displayed allows you to switch farms which rerenders the table with the appropriate information
+-An edit button next to the farm name opens a form or reoutes to a page with a form prefilled with the farm info, which allows you to edit the info and submit it to the db
+-An edit button at the end of each bed row allows opens a form or allows you to update the fields directly in the table
