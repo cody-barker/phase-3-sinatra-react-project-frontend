@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header>Crop Tracker</header>
+      <h1>Crop Tracker</h1>
       <h3>Farm Name and Location <button>Edit</button> </h3>
       
       <table>
