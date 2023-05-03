@@ -19,22 +19,22 @@ function App() {
     .then(beds => setAllBeds(beds))
   },[])
 
-  let [farm, setFarm] = useState(allFarms[0])
-  let [beds, setBeds] = useState(allBeds[0])
+  let [farm, setFarm] = useState({})
+  let [beds, setBeds] = useState([])
 
   function onFarmChange(e){
     setFarm(allFarms.find(farm => e.target.value === farm.name))
     setBeds(allBeds.filter(bed => bed.farm_id === farm.id))
-    console.log(farm)
-    console.log(beds)
   }
 
-  const bedComps = allBeds.map(bed => <TableRow bed={bed} key={bed.id}/>)
+  const allBedComps = allBeds.map(bed => <TableRow bed={bed} key={bed.id}/>)
+  const selectedFarmBedComps = beds.map(bed => <TableRow bed={bed} key={bed.id}/>)
 
   return (
     <div className="App">
       <h1>Farm Tracker</h1>
       <select onChange={onFarmChange}>
+        <option>All Farms</option>
         {allFarms.map(farm => <option>{farm.name} </option>)}
       </select>
 
@@ -54,7 +54,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {bedComps}
+          {selectedFarmBedComps}
             {/* <tr>
             <td>1</td>
             <td>60</td>
