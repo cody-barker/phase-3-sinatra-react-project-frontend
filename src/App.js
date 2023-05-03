@@ -1,4 +1,5 @@
 import './App.css';
+import TableRow from './TableRow'
 import React, { useState, useEffect } from 'react';
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
     console.log(beds)
   }
 
+  const bedComps = allBeds.map(bed => <TableRow bed={bed} key={bed.id}/>)
+
   return (
     <div className="App">
       <h1>Farm Tracker</h1>
@@ -51,7 +54,8 @@ function App() {
           </tr>
         </thead>
         <tbody>
-            <tr>
+          {bedComps}
+            {/* <tr>
             <td>1</td>
             <td>60</td>
             <td>Yes</td>
@@ -59,8 +63,7 @@ function App() {
             <td>29</td>
             <td>04-01-23</td>
             <td>4-30-23</td>
-            <td><button>X</button></td>
-            </tr>
+            <td><button>X</button></td> */}
         </tbody>
       </table>
     </div>
