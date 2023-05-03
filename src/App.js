@@ -43,13 +43,12 @@ function App() {
 
   return (
     <div className="App">
+      
       <h1>Farm Tracker</h1>
-      <select onChange={(e) => {
-        onFarmChange(e)
-        
-      }}>
+
+      <select onChange={onFarmChange}>
         <option>All Farms</option>
-        {allFarms.map(farm => <option>{farm.name} </option>)}
+        {allFarms.map(farm => <option key={farm.id}>{farm.name}</option>)}
       </select>
 
       <h3>{select === "All Farms" ? null : <button>Edit Farm</button>} </h3>
