@@ -8,12 +8,12 @@ const {id, sq_ft, in_use, crop, dtm, planting_date, harvest_date} = bed
         <tr>
             <td>{id}</td>
             <td>{sq_ft}</td>
-            <td>{in_use}</td>
+            <td>{in_use ? "Yes" : "No"}</td>
             <td>{crop}</td>
             <td>{dtm}</td>
             <td>{planting_date}</td>
             <td>{harvest_date}</td>
-            <button>X</button>
+            <td><button>X</button></td>
         </tr>
     )
 }

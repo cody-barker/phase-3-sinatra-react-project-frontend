@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
 
+  let [select, setSelect] = useState("All Farms")
   let [allFarms, setAllFarms] = useState([])
   let [allBeds, setAllBeds] = useState([])
+  let [selectFarm, setSelectFarm] = useState({})
+  let [selectBeds, setSelectBeds] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/farms")
@@ -19,26 +22,37 @@ function App() {
     .then(beds => setAllBeds(beds))
   },[])
 
-  let [farm, setFarm] = useState({})
-  let [beds, setBeds] = useState([])
-
   function onFarmChange(e){
-    setFarm(allFarms.find(farm => e.target.value === farm.name))
-    setBeds(allBeds.filter(bed => bed.farm_id === farm.id))
+    if (e.target.value === "All Farms") {
+      setSelect("All Farms")
+      setSelectFarm([...allFarms])
+      setSelectBeds([...allBeds])
+    } else {
+    setSelect(e.target.value)
+    setSelectFarm([...allFarms].find(farm => e.target.value === farm.name))
+    setSelectBeds([...allBeds].filter(bed => e.target.value === bed.farm.name))
+    }
   }
 
-  const allBedComps = allBeds.map(bed => <TableRow bed={bed} key={bed.id}/>)
-  const selectedFarmBedComps = beds.map(bed => <TableRow bed={bed} key={bed.id}/>)
+  const allBedComps = [...allBeds].map(bed => <TableRow bed={bed} key={bed.id}/>)
+  const selectBedComps = [...selectBeds].map(bed => <TableRow bed={bed} key={bed.id}/>)
+
+  console.log(selectFarm)
+  console.log(selectBeds)
+  console.log(select)
 
   return (
     <div className="App">
       <h1>Farm Tracker</h1>
-      <select onChange={onFarmChange}>
+      <select onChange={(e) => {
+        onFarmChange(e)
+        
+      }}>
         <option>All Farms</option>
         {allFarms.map(farm => <option>{farm.name} </option>)}
       </select>
 
-      <h3><button>Edit Farm</button> </h3>
+      <h3>{select === "All Farms" ? null : <button>Edit Farm</button>} </h3>
       
       <table>
         <thead>
@@ -54,16 +68,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {selectedFarmBedComps}
-            {/* <tr>
-            <td>1</td>
-            <td>60</td>
-            <td>Yes</td>
-            <td>Radishes</td>
-            <td>29</td>
-            <td>04-01-23</td>
-            <td>4-30-23</td>
-            <td><button>X</button></td> */}
+          {select === "All Farms" ? allBedComps : selectBedComps}
         </tbody>
       </table>
     </div>
