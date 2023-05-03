@@ -13,7 +13,10 @@ const {id, sq_ft, in_use, crop, dtm, planting_date, harvest_date} = bed
             <td>{dtm}</td>
             <td>{planting_date}</td>
             <td>{harvest_date}</td>
-            <td><button>X</button></td>
+            <td>
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </td>
         </tr>
     )
 }
