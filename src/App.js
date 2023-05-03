@@ -6,6 +6,7 @@ function App() {
 
   let [allFarms, setAllFarms] = useState([])
   let [allBeds, setAllBeds] = useState([])
+  let [farm, setFarm] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:9292/farms")
@@ -19,11 +20,17 @@ function App() {
     .then(beds => setAllBeds(beds))
   },[])
 
+  function onFarmChange(e){
+    setFarm(e.target.value)
+  }
 
   return (
     <div className="App">
-      <h1>Crop Tracker</h1>
-      <h3>Farm Name and Location<button>Edit</button> </h3>
+      <h1>Farm Tracker</h1>
+      <select onChange={onFarmChange}>
+        {allFarms.map(farm => <option>{farm.name} </option>)}
+      </select>
+      <h3><button>Edit</button> </h3>
       
       <table>
         <thead>
