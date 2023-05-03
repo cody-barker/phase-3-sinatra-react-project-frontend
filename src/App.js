@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
@@ -6,7 +5,6 @@ function App() {
 
   let [allFarms, setAllFarms] = useState([])
   let [allBeds, setAllBeds] = useState([])
-  let [farm, setFarm] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:9292/farms")
@@ -20,8 +18,14 @@ function App() {
     .then(beds => setAllBeds(beds))
   },[])
 
+  let [farm, setFarm] = useState(allFarms[0])
+  let [beds, setBeds] = useState(allBeds[0])
+
   function onFarmChange(e){
-    setFarm(e.target.value)
+    setFarm(allFarms.find(farm => e.target.value === farm.name))
+    setBeds(allBeds.filter(bed => bed.farm_id === farm.id))
+    console.log(farm)
+    console.log(beds)
   }
 
   return (
@@ -30,7 +34,8 @@ function App() {
       <select onChange={onFarmChange}>
         {allFarms.map(farm => <option>{farm.name} </option>)}
       </select>
-      <h3><button>Edit</button> </h3>
+
+      <h3><button>Edit Farm</button> </h3>
       
       <table>
         <thead>
@@ -46,7 +51,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+            <tr>
             <td>1</td>
             <td>60</td>
             <td>Yes</td>
@@ -55,7 +60,7 @@ function App() {
             <td>04-01-23</td>
             <td>4-30-23</td>
             <td><button>X</button></td>
-          </tr>
+            </tr>
         </tbody>
       </table>
     </div>
