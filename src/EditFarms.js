@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import FarmForm from './FarmForm'
+import FarmSelector from './FarmSelector'
 
-function AddFarm() {
+function EditFarms({select, setSelect, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
 
     const [newFarmName, setNewFarmName] = useState("")
     const [newFarmCity, setNewFarmCity] = useState("")
@@ -37,6 +39,7 @@ function AddFarm() {
         state: newFarmState
     }
 
+    //REFACTOR FARM FORM
 
     return (
         <div>
@@ -50,8 +53,14 @@ function AddFarm() {
                 <input type="text" value={newFarmState} onChange={onStateChange}></input>
                 <button type="submit">Add Farm</button>
             </form>
+
+            <h3>Update a Farm</h3>
+            <FarmSelector allFarms={allFarms} onFarmChange={onFarmChange}/>
+            {select === "All Farms" ? null : <FarmForm selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>}
         </div>
+
+        
     )
 }
 
-export default AddFarm
+export default EditFarms

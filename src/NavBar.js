@@ -5,7 +5,7 @@ function NavBar() {
     return(
         <nav id="navbar">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/addfarm">Add a Farm</NavLink>
+            <NavLink to="/editfarms">Edit Farms</NavLink>
         </nav>
     )
 }
