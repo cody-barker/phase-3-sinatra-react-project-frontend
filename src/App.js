@@ -1,6 +1,7 @@
 import './App.css';
 import TableRow from './TableRow'
 import React, { useState, useEffect } from 'react';
+import FarmForm from './FarmForm'
 
 function App() {
 
@@ -37,22 +38,23 @@ function App() {
   const allBedComps = [...allBeds].map(bed => <TableRow bed={bed} key={bed.id}/>)
   const selectBedComps = [...selectBeds].map(bed => <TableRow bed={bed} key={bed.id}/>)
 
-  console.log(selectFarm)
-  console.log(selectBeds)
-  console.log(select)
+  // console.log(selectFarm)
+  // console.log(selectBeds)
+  // console.log(select)
 
   return (
     <div className="App">
-
       <h1>Farm Tracker</h1>
 
       <select onChange={onFarmChange}>
         <option>All Farms</option>
         {allFarms.map(farm => <option key={farm.id}>{farm.name}</option>)}
       </select>
-      <h4>{select === "All Farms" ? null : `${selectFarm.city}, ${selectFarm.state}`}</h4>
 
+      <h4>{select === "All Farms" ? null : `${selectFarm.city}, ${selectFarm.state}`}</h4>
       <h3>{select === "All Farms" ? null : <button>Edit Farm</button>} </h3>
+
+      <FarmForm />
       
       <table>
         <thead>
@@ -71,6 +73,7 @@ function App() {
           {select === "All Farms" ? allBedComps : selectBedComps}
         </tbody>
       </table>
+
     </div>
   );
 }
