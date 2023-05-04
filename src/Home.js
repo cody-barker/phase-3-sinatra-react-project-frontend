@@ -1,5 +1,5 @@
-import TableRow from './TableRow'
-import React, { useState, useEffect } from 'react';
+
+import React from 'react';
 import FarmSelector from './FarmSelector'
 
 function Home ({allFarms, onFarmChange, select, selectFarm, allBedComps, selectBedComps}) {

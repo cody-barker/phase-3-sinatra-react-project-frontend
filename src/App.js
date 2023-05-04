@@ -29,7 +29,7 @@ function App() {
     fetch("http://localhost:9292/farms")
     .then(r => r.json())
     .then(farms => setAllFarms(farms))
-  },[selectFarm])
+  },[select])
 
   useEffect(() => {
     fetch("http://localhost:9292/beds")
@@ -43,6 +43,7 @@ function App() {
 
 
   const allBedComps = [...allBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
+  
   const selectBedComps = [...selectBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
 
   // console.log(selectFarm)
@@ -54,6 +55,8 @@ function App() {
       setSelect("All Farms")
       setSelectFarm([...allFarms])
       setSelectBeds([...allBeds])
+      console.log(select)
+      console.log(selectBeds)
     } else {
       setSelect(e.target.value)
       setSelectFarm(findFarm(e))
@@ -61,6 +64,8 @@ function App() {
       setName(findFarm(e).name)
       setCity(findFarm(e).city)
       setState(findFarm(e).state)
+      console.log(select)
+      console.log(selectBeds)
     }
   }
 

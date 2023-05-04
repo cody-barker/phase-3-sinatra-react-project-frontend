@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FarmForm({selectFarm, setSelectFarm, select, setSelect, name, setName, city, setCity, state, setState}) {
+function FarmForm({setSelectBeds, selectFarm, setSelectFarm, select, setSelect, name, setName, city, setCity, state, setState}) {
 
     let update = {
         name: name,
@@ -32,10 +32,12 @@ function FarmForm({selectFarm, setSelectFarm, select, setSelect, name, setName, 
         .then(r =>r.json())
         .then(farm => {
             setSelectFarm(farm)
-            setSelect(farm.name)
             setName(farm.name)
             setCity(farm.city)
             setState(farm.state)
+            setSelect("All Farms")
+            console.log(`select= ${select}`)
+            alert(`${name} updated!`)
         })
     }
     
