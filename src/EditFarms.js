@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import FarmForm from './FarmForm'
 import FarmSelector from './FarmSelector'
 
-function EditFarms({select, setSelect, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
+function EditFarms({select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
 
     const [newFarmName, setNewFarmName] = useState("")
     const [newFarmCity, setNewFarmCity] = useState("")
@@ -56,7 +56,8 @@ function EditFarms({select, setSelect, selectFarm, setSelectFarm, name, setName,
 
             <h3>Update a Farm</h3>
             <FarmSelector allFarms={allFarms} onFarmChange={onFarmChange}/>
-            {select === "All Farms" ? null : <FarmForm selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>}
+            {select === "All Farms" ? null : <FarmForm selectBeds={selectBeds} setSelectBeds={setSelectBeds} selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>}
+            <button>Delete Farm</button>
         </div>
 
         

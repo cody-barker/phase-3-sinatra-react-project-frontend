@@ -72,7 +72,7 @@ function App() {
             <Home allFarms={allFarms} onFarmChange={onFarmChange} select={select} selectFarm={selectFarm} allBedComps={allBedComps} selectBedComps={selectBedComps}/>
           </Route>
           <Route path ="/editfarms">
-            <EditFarms onFarmChange={onFarmChange} allFarms={allFarms}/>
+            <EditFarms onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
           </Route>
         </Switch>
     </div>
