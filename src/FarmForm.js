@@ -1,10 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-function FarmForm({selectFarm, select, setSelectFarm, setSelect}) {
-
-    const [name, setName] = useState("")
-    const [city, setCity] = useState("")
-    const [state, setState] = useState("")
+function FarmForm({selectFarm, setSelectFarm, select, setSelect, name, setName, city, setCity, state, setState}) {
 
     let update = {
         name: name,
@@ -52,13 +48,12 @@ function FarmForm({selectFarm, select, setSelectFarm, setSelect}) {
     
     return (
         <div>
-            
             <form onSubmit={onUpdateFarm}>
                 <input onChange={onNameChange} value={name} type="text"></input>
                 <input onChange={onCityChange} value={city} type="text"></input>
                 <input onChange={onStateChange} value={state} type="text"></input>
-                <h3>{select === "All Farms" ? null : <button onClick={copyFarm}>Copy Farm Data</button>} </h3>
-                <button type="submit">Update</button>
+                <h3>{select === "All Farms" ? null : <button className="copy-btn" onClick={copyFarm}>Copy Farm Data</button>} </h3>
+                <button className="update-btn" type="submit">Update</button>
         </form>
       </div>
     )

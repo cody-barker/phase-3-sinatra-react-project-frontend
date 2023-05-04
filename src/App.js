@@ -10,6 +10,9 @@ function App() {
   let [allBeds, setAllBeds] = useState([])
   let [selectFarm, setSelectFarm] = useState({})
   let [selectBeds, setSelectBeds] = useState([])
+  let [name, setName] = useState("")
+  let [city, setCity] = useState("")
+  let [state, setState] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:9292/farms")
@@ -21,7 +24,11 @@ function App() {
     fetch("http://localhost:9292/beds")
     .then(r => r.json())
     .then(beds => setAllBeds(beds))
-  },[])
+  },[selectBeds])
+
+  function findFarm(e){
+    return [...allFarms].find(farm => e.target.value === farm.name)
+  }
 
   function onFarmChange(e){
     if (e.target.value === "All Farms") {
@@ -30,8 +37,11 @@ function App() {
       setSelectBeds([...allBeds])
     } else {
     setSelect(e.target.value)
-    setSelectFarm([...allFarms].find(farm => e.target.value === farm.name))
+    setSelectFarm(findFarm(e))
     setSelectBeds([...allBeds].filter(bed => e.target.value === bed.farm.name))
+    setName(findFarm(e).name)
+    setCity(findFarm(e).city)
+    setState(findFarm(e).state)
     }
   }
 
@@ -53,7 +63,7 @@ function App() {
 
       <h4>{select === "All Farms" ? null : `${selectFarm.city}, ${selectFarm.state}`}</h4>
 
-      {select === "All Farms" ? null : <FarmForm selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect}/>}
+      {select === "All Farms" ? null : <FarmForm selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>}
       
       <table>
         <thead>
