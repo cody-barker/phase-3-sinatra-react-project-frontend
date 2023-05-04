@@ -39,12 +39,12 @@ function FarmForm({selectFarm, setSelectFarm, select, setSelect, name, setName, 
         })
     }
     
-    function copyFarm(e) {
-        e.preventDefault()
-        setName(selectFarm.name)
-        setCity(selectFarm.city)
-        setState(selectFarm.state)
-    }
+    // function copyFarm(e) {
+    //     e.preventDefault()
+    //     setName(selectFarm.name)
+    //     setCity(selectFarm.city)
+    //     setState(selectFarm.state)
+    // }
     
     return (
         <div>
@@ -55,8 +55,7 @@ function FarmForm({selectFarm, setSelectFarm, select, setSelect, name, setName, 
                 <input onChange={onCityChange} value={city} type="text"></input>
                 <label>State</label>
                 <input onChange={onStateChange} value={state} type="text"></input>
-                <h3>{select === "All Farms" ? null : <button className="copy-btn" onClick={copyFarm}>Copy Farm Data</button>} </h3>
-                <button className="update-btn" type="submit">Update Farm</button>
+                <h3>{select === "All Farms" ? null : <button className="update-btn" type="submit">Update Farm</button>} </h3>
         </form>
       </div>
     )
