@@ -49,11 +49,14 @@ function FarmForm({selectFarm, setSelectFarm, select, setSelect, name, setName, 
     return (
         <div>
             <form onSubmit={onUpdateFarm}>
+                <label>Farm Name</label>
                 <input onChange={onNameChange} value={name} type="text"></input>
+                <label>City</label>
                 <input onChange={onCityChange} value={city} type="text"></input>
+                <label>State</label>
                 <input onChange={onStateChange} value={state} type="text"></input>
                 <h3>{select === "All Farms" ? null : <button className="copy-btn" onClick={copyFarm}>Copy Farm Data</button>} </h3>
-                <button className="update-btn" type="submit">Update</button>
+                <button className="update-btn" type="submit">Update Farm</button>
         </form>
       </div>
     )

@@ -49,13 +49,8 @@ tr, td {
   padding-right: 25px;
 }
 
-form {
-  display: inline
-}
-
-.copy-btn
-.update-btn {
-  display: inline
+input {
+  margin: 10px;
 }
 
 
