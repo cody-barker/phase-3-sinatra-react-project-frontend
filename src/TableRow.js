@@ -1,8 +1,19 @@
 import React from 'react'
 
-function TableRow({bed}) {
+function TableRow({bed, setAllBeds, allBeds, selectBeds, setSelectBeds}) {
 
 const {id, sq_ft, in_use, crop, dtm, planting_date, harvest_date} = bed
+
+function onDelete(){
+    fetch(`http://localhost:9292/beds/${id}`, {
+        method: "DELETE"
+    })
+    .then(r => r.json())
+    .then(bed => {
+        setAllBeds([...allBeds].filter(obj => obj.id != bed.id))
+        setSelectBeds([...selectBeds].filter(obj => obj.id != bed.id))
+    })
+}
 
     return(
         <tr>
@@ -15,7 +26,7 @@ const {id, sq_ft, in_use, crop, dtm, planting_date, harvest_date} = bed
             <td>{harvest_date}</td>
             <td>
                 <button className="edit">Edit</button>
-                <button className="delete">Delete</button>
+                <button onClick={onDelete} className="delete">Delete</button>
             </td>
         </tr>
     )

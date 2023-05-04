@@ -45,8 +45,8 @@ function App() {
     }
   }
 
-  const allBedComps = [...allBeds].map(bed => <TableRow bed={bed} key={bed.id}/>)
-  const selectBedComps = [...selectBeds].map(bed => <TableRow bed={bed} key={bed.id}/>)
+  const allBedComps = [...allBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
+  const selectBedComps = [...selectBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
 
   // console.log(selectFarm)
   // console.log(selectBeds)
