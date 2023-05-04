@@ -15,7 +15,7 @@ function App() {
     fetch("http://localhost:9292/farms")
     .then(r => r.json())
     .then(farms => setAllFarms(farms))
-  },[])
+  },[selectFarm])
 
   useEffect(() => {
     fetch("http://localhost:9292/beds")
