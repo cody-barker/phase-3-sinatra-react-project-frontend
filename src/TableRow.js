@@ -14,8 +14,8 @@ const {id, sq_ft, in_use, crop, dtm, planting_date, harvest_date} = bed
             <td>{planting_date}</td>
             <td>{harvest_date}</td>
             <td>
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
+                <button className="edit">Edit</button>
+                <button className="delete">Delete</button>
             </td>
         </tr>
     )

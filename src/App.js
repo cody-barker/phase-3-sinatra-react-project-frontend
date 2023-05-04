@@ -52,9 +52,8 @@ function App() {
       </select>
 
       <h4>{select === "All Farms" ? null : `${selectFarm.city}, ${selectFarm.state}`}</h4>
-      <h3>{select === "All Farms" ? null : <button>Edit Farm</button>} </h3>
 
-      <FarmForm />
+      {select === "All Farms" ? null : <FarmForm selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect}/>}
       
       <table>
         <thead>
