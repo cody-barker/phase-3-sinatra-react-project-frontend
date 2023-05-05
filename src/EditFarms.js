@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import FarmForm from './FarmForm'
 import FarmSelector from './FarmSelector'
 
-function EditFarms({ onUpdateFarm, setAllFarms, select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
+function EditFarms({ onDeleteFarm, onUpdateFarm, setAllFarms, select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
 
     const [newFarmName, setNewFarmName] = useState("")
     const [newFarmCity, setNewFarmCity] = useState("")
@@ -39,13 +39,7 @@ function EditFarms({ onUpdateFarm, setAllFarms, select, setSelect, selectBeds, s
         state: newFarmState
     }
 
-    function onDeleteFarm() {
-        fetch(`http://localhost:9292/farms/${selectFarm.id}`, {
-            method: "DELETE"
-        })
-        .then(r => r.json())
-        .then(farm => setAllFarms([...allFarms].filter(obj => obj.name != farm.name)))
-    }
+    //setAllFarms([...allFarms].filter(obj => obj.name != farm.name))
 
     //REFACTOR FARM FORM
 
