@@ -39,10 +39,6 @@ function App() {
     .then(beds => setAllBeds(beds))
   },[selectBeds, allFarms])
 
-  function findFarm(e){
-    return [...allFarms].find(farm => e.target.value === farm.name)
-  }
-
   const allBedComps = [...allBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
   
   const selectBedComps = [...selectBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
@@ -52,6 +48,22 @@ function App() {
     city: city,
     state: state
 }
+
+  function findFarm(e){
+    return [...allFarms].find(farm => e.target.value === farm.name)
+  }
+
+  function onNameChange(e) {
+    setName(e.target.value)
+  }
+  
+  function onCityChange(e) {
+    setCity(e.target.value)
+  }
+  
+  function onStateChange(e) {
+    setState(e.target.value)
+  }
 
   function onFarmChange(e){
     if (e.target.value === "All Farms") {
@@ -119,18 +131,6 @@ function onDeleteFarm() {
         setSelectFarm({})
         setSelect("All Farms")
   })
-}
-
-function onNameChange(e) {
-  setName(e.target.value)
-}
-
-function onCityChange(e) {
-  setCity(e.target.value)
-}
-
-function onStateChange(e) {
-  setState(e.target.value)
 }
 
   return (
