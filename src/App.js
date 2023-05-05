@@ -37,7 +37,7 @@ function App() {
     fetch("http://localhost:9292/beds")
     .then(r => r.json())
     .then(beds => setAllBeds(beds))
-  },[selectBeds, allFarms])
+  },[allFarms])
 
   const allBedComps = [...allBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
   
@@ -113,9 +113,7 @@ function App() {
         setState(farm.state)
         setSelect("All Farms")
         setSelectBeds(farm.beds)
-        console.log(`select= ${select}`)
         alert(`${name} updated!`)
-        console.log(farm)
     })
 }
 
@@ -128,6 +126,7 @@ function onDeleteFarm() {
         setAllFarms([...allFarms].filter(obj => obj.id != farm.id))
         setSelectFarm({})
         setSelect("All Farms")
+        alert(`${farm.name} removed from Farm Tracker.`)
   })
 }
 

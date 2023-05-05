@@ -18,7 +18,7 @@ function EditFarms({ onAddFarm, onNameChange, onCityChange, onStateChange, onDel
             <Selector select={select} selectFarm={selectFarm} allFarms={allFarms} onFarmChange={onFarmChange}/>
             
             {select === "All Farms" ? null : <FarmForm onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onUpdateFarm={onUpdateFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds} selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>}
-            <button onClick={onDeleteFarm}>Delete Farm</button>
+            <button className="delete" onClick={onDeleteFarm}>Delete Farm</button>
         </div>
 
         

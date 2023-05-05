@@ -8,7 +8,7 @@ function Home ({allFarms, onFarmChange, select, selectFarm, allBedComps, selectB
         <div className="App">
       <h1>Farm Tracker</h1>
 
-      <Selector allFarms={allFarms} onFarmChange={onFarmChange}/>
+      <Selector select={select} allFarms={allFarms} onFarmChange={onFarmChange}/>
 
       <h4>{select === "All Farms" ? null : `${selectFarm.city}, ${selectFarm.state}`}</h4>
 
