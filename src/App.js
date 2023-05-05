@@ -47,7 +47,7 @@ function App() {
   
   const selectBedComps = [...selectBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
 
-  let update = {
+  let farm = {
     name: name,
     city: city,
     state: state
@@ -71,6 +71,21 @@ function App() {
     console.log(selectBeds)
   }
 
+  function onAddFarm (e) {
+    e.preventDefault()
+    fetch('http://localhost:9292/farms', {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(farm)
+    })
+    .then(r => r.json())
+    .then(farm => {
+      setAllFarms([...allFarms, farm])
+      alert(`${farm.name} has been added to the Farm Tracker.`)})
+}
+
   function onUpdateFarm(e) {
     e.preventDefault()
     fetch(`http://localhost:9292/farms/${selectFarm.id}`, {
@@ -78,7 +93,7 @@ function App() {
         headers: {
             "Content-Type" : "application/json"
         },
-        body: JSON.stringify(update)
+        body: JSON.stringify(farm)
     })
     .then(r =>r.json())
     .then(farm => {
@@ -106,6 +121,18 @@ function onDeleteFarm() {
   })
 }
 
+function onNameChange(e) {
+  setName(e.target.value)
+}
+
+function onCityChange(e) {
+  setCity(e.target.value)
+}
+
+function onStateChange(e) {
+  setState(e.target.value)
+}
+
   return (
     <div className = "app">
       <NavBar />
@@ -114,7 +141,7 @@ function onDeleteFarm() {
             <Home allFarms={allFarms} onFarmChange={onFarmChange} select={select} selectFarm={selectFarm} allBedComps={allBedComps} selectBedComps={selectBedComps}/>
           </Route>
           <Route path ="/editfarms">
-            <EditFarms onDeleteFarm={onDeleteFarm} setAllFarms={setAllFarms} update={update} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
+            <EditFarms onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onAddFarm={onAddFarm} onDeleteFarm={onDeleteFarm} setAllFarms={setAllFarms} farm={farm} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
           </Route>
         </Switch>
     </div>
