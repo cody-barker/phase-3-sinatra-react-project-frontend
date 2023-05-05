@@ -10,7 +10,7 @@ function Home ({allFarms, onFarmChange, select, selectFarm, allBedComps, selectB
 
       <Selector select={select} allFarms={allFarms} onFarmChange={onFarmChange}/>
 
-      <h4>{select === "All Farms" ? null : `${selectFarm.city}, ${selectFarm.state}`}</h4>
+      <h3>{select === "All Farms" ? null : `${selectFarm.city}, ${selectFarm.state}`}</h3>
 
       <table>
         <thead>

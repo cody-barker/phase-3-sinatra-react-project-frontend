@@ -25,7 +25,6 @@ function onDelete(){
             <td>{planting_date}</td>
             <td>{harvest_date}</td>
             <td>
-                <button className="edit">Edit</button>
                 <button onClick={onDelete} className="delete">Delete</button>
             </td>
         </tr>

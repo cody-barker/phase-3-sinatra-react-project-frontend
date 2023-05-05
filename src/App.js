@@ -49,10 +49,6 @@ function App() {
     state: state
 }
 
-  function findFarm(e){
-    return [...allFarms].find(farm => e.target.value === farm.name)
-  }
-
   function onNameChange(e) {
     setName(e.target.value)
   }
@@ -65,11 +61,19 @@ function App() {
     setState(e.target.value)
   }
 
+  function findFarm(e){
+    return [...allFarms].find(farm => e.target.value === farm.name)
+
+  }
+
   function onFarmChange(e){
     if (e.target.value === "All Farms") {
       setSelect("All Farms")
       setSelectFarm([...allFarms])
       setSelectBeds([...allBeds])
+      setName("")
+      setCity("")
+      setState("")
     } else {
       setSelect(e.target.value)
       setSelectFarm(findFarm(e))
