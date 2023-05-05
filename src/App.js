@@ -14,13 +14,13 @@ function App() {
  * App
  *    Home
  *    Edit Farms
- *      Farm Selector
+ *      Selector
  *      Farm Form
  */
 
   let [allFarms, setAllFarms] = useState([])
-  let [select, setSelect] = useState("All Farms")
   let [allBeds, setAllBeds] = useState([])
+  let [select, setSelect] = useState("All Farms")
   let [selectFarm, setSelectFarm] = useState({})
   let [selectBeds, setSelectBeds] = useState([])
   let [name, setName] = useState("")
@@ -73,14 +73,11 @@ function App() {
     } else {
       setSelect(e.target.value)
       setSelectFarm(findFarm(e))
-      console.log(allBeds)
       setSelectBeds([...allBeds].filter(bed => e.target.value === bed.farm.name))
       setName(findFarm(e).name)
       setCity(findFarm(e).city)
       setState(findFarm(e).state)
     }
-    console.log(select)
-    console.log(selectBeds)
   }
 
   function onAddFarm (e) {
@@ -95,6 +92,7 @@ function App() {
     .then(r => r.json())
     .then(farm => {
       setAllFarms([...allFarms, farm])
+      setSelect("All Farms")
       alert(`${farm.name} has been added to the Farm Tracker.`)})
 }
 

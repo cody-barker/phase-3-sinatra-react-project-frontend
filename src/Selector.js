@@ -1,8 +1,9 @@
 import React from 'react'
 
-function Selector ({onFarmChange, allFarms}) {
+function Selector ({onFarmChange, allFarms, select}) {
+
     return (
-        <select onChange={onFarmChange}>
+      <select value={select} onChange={onFarmChange}>
         <option>All Farms</option>
         {allFarms.map(farm => <option key={farm.id}>{farm.name}</option>)}
       </select>

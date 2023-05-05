@@ -1,6 +1,6 @@
 
 import React from 'react';
-import FarmSelector from './FarmSelector'
+import Selector from './Selector'
 
 function Home ({allFarms, onFarmChange, select, selectFarm, allBedComps, selectBedComps}) {
   
@@ -8,7 +8,7 @@ function Home ({allFarms, onFarmChange, select, selectFarm, allBedComps, selectB
         <div className="App">
       <h1>Farm Tracker</h1>
 
-      <FarmSelector allFarms={allFarms} onFarmChange={onFarmChange}/>
+      <Selector allFarms={allFarms} onFarmChange={onFarmChange}/>
 
       <h4>{select === "All Farms" ? null : `${selectFarm.city}, ${selectFarm.state}`}</h4>
 

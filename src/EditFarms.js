@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import FarmForm from './FarmForm'
-import FarmSelector from './FarmSelector'
+import Selector from './Selector'
 
 function EditFarms({ onAddFarm, onNameChange, onCityChange, onStateChange, onDeleteFarm, onUpdateFarm, select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
 
@@ -15,7 +15,7 @@ function EditFarms({ onAddFarm, onNameChange, onCityChange, onStateChange, onDel
             <FarmForm onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onUpdateFarm={onAddFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds} selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>
 
             <h3>Update a Farm</h3>
-            <FarmSelector allFarms={allFarms} onFarmChange={onFarmChange}/>
+            <Selector select={select} selectFarm={selectFarm} allFarms={allFarms} onFarmChange={onFarmChange}/>
             
             {select === "All Farms" ? null : <FarmForm onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onUpdateFarm={onUpdateFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds} selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>}
             <button onClick={onDeleteFarm}>Delete Farm</button>
