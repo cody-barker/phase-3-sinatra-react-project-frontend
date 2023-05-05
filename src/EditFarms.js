@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import FarmForm from './FarmForm'
 import FarmSelector from './FarmSelector'
 
-function EditFarms({select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
+function EditFarms({ onUpdateFarm, setAllFarms, select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
 
     const [newFarmName, setNewFarmName] = useState("")
     const [newFarmCity, setNewFarmCity] = useState("")
@@ -39,6 +39,14 @@ function EditFarms({select, setSelect, selectBeds, setSelectBeds, selectFarm, se
         state: newFarmState
     }
 
+    function onDeleteFarm() {
+        fetch(`http://localhost:9292/farms/${selectFarm.id}`, {
+            method: "DELETE"
+        })
+        .then(r => r.json())
+        .then(farm => setAllFarms([...allFarms].filter(obj => obj.name != farm.name)))
+    }
+
     //REFACTOR FARM FORM
 
     return (
@@ -56,8 +64,8 @@ function EditFarms({select, setSelect, selectBeds, setSelectBeds, selectFarm, se
 
             <h3>Update a Farm</h3>
             <FarmSelector allFarms={allFarms} onFarmChange={onFarmChange}/>
-            {select === "All Farms" ? null : <FarmForm selectBeds={selectBeds} setSelectBeds={setSelectBeds} selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>}
-            <button>Delete Farm</button>
+            {select === "All Farms" ? null : <FarmForm onUpdateFarm={onUpdateFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds} selectFarm={selectFarm} select={select} setSelectFarm={setSelectFarm} setSelect={setSelect} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState}/>}
+            <button onClick={onDeleteFarm}>Delete Farm</button>
         </div>
 
         

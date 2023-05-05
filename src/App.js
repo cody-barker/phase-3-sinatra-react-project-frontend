@@ -14,6 +14,8 @@ function App() {
  * App
  *    Home
  *    Edit Farms
+ *      Farm Selector
+ *      Farm Form
  */
 
   let [allFarms, setAllFarms] = useState([])
@@ -41,10 +43,15 @@ function App() {
     return [...allFarms].find(farm => e.target.value === farm.name)
   }
 
-
   const allBedComps = [...allBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
   
   const selectBedComps = [...selectBeds].map(bed => <TableRow bed={bed} key={bed.id} allBeds={allBeds} setAllBeds={setAllBeds} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>)
+
+  let update = {
+    name: name,
+    city: city,
+    state: state
+}
 
   // console.log(selectFarm)
   // console.log(selectBeds)
@@ -55,8 +62,6 @@ function App() {
       setSelect("All Farms")
       setSelectFarm([...allFarms])
       setSelectBeds([...allBeds])
-      console.log(select)
-      console.log(selectBeds)
     } else {
       setSelect(e.target.value)
       setSelectFarm(findFarm(e))
@@ -64,10 +69,33 @@ function App() {
       setName(findFarm(e).name)
       setCity(findFarm(e).city)
       setState(findFarm(e).state)
-      console.log(select)
-      console.log(selectBeds)
     }
+    console.log(select)
+    console.log(selectBeds)
   }
+
+  function onUpdateFarm(e) {
+    e.preventDefault()
+    fetch(`http://localhost:9292/farms/${selectFarm.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(update)
+    })
+    .then(r =>r.json())
+    .then(farm => {
+        setSelectFarm(farm)
+        setName(farm.name)
+        setCity(farm.city)
+        setState(farm.state)
+        setSelect("All Farms")
+        setSelectBeds(farm.beds)
+        console.log(`select= ${select}`)
+        alert(`${name} updated!`)
+        console.log(farm)
+    })
+}
 
   return (
     <div className = "app">
@@ -77,7 +105,7 @@ function App() {
             <Home allFarms={allFarms} onFarmChange={onFarmChange} select={select} selectFarm={selectFarm} allBedComps={allBedComps} selectBedComps={selectBedComps}/>
           </Route>
           <Route path ="/editfarms">
-            <EditFarms onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
+            <EditFarms setAllFarms={setAllFarms} update={update} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
           </Route>
         </Switch>
     </div>
