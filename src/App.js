@@ -53,10 +53,6 @@ function App() {
     state: state
 }
 
-  // console.log(selectFarm)
-  // console.log(selectBeds)
-  // console.log(select)
-
   function onFarmChange(e){
     if (e.target.value === "All Farms") {
       setSelect("All Farms")
@@ -108,17 +104,6 @@ function onDeleteFarm() {
         setSelectFarm({})
         setSelect("All Farms")
   })
-
-  // fetch('http://localhost:9292/farms')
-  // .then(r => r.json())
-  // .then(farms => {setAllFarms(farms)})
-
-  // fetch('http:localhost:9292/beds')
-  // .then(r => r.json())
-  // .then(beds => {
-  //   setAllBeds(beds)
-  //   setSelectBeds([...allBeds])
-  // })
 }
 
   return (

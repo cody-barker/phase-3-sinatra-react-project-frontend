@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import FarmForm from './FarmForm'
 import FarmSelector from './FarmSelector'
 
-function EditFarms({ onDeleteFarm, onUpdateFarm, setAllFarms, select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
+function EditFarms({ onDeleteFarm, onUpdateFarm, select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
 
     const [newFarmName, setNewFarmName] = useState("")
     const [newFarmCity, setNewFarmCity] = useState("")

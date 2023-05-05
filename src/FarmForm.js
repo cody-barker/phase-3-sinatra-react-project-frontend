@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FarmForm({ onUpdateFarm, setSelectBeds, selectFarm, setSelectFarm, select, setSelect, name, setName, city, setCity, state, setState}) {
+function FarmForm({onUpdateFarm, select, name, setName, city, setCity, state, setState}) {
 
     function onNameChange(e) {
         setName(e.target.value)
@@ -14,13 +14,6 @@ function FarmForm({ onUpdateFarm, setSelectBeds, selectFarm, setSelectFarm, sele
         setState(e.target.value)
     }
     
-    // function copyFarm(e) {
-    //     e.preventDefault()
-    //     setName(selectFarm.name)
-    //     setCity(selectFarm.city)
-    //     setState(selectFarm.state)
-    // }
-    
     return (
         <div>
             <form onSubmit={onUpdateFarm}>
@@ -30,7 +23,7 @@ function FarmForm({ onUpdateFarm, setSelectBeds, selectFarm, setSelectFarm, sele
                 <input onChange={onCityChange} value={city} type="text"></input>
                 <label>State</label>
                 <input onChange={onStateChange} value={state} type="text"></input>
-                <h3>{select === "All Farms" ? null : <button className="update-btn" type="submit">Update Farm</button>} </h3>
+                {select === "All Farms" ? null : <button className="update-btn" type="submit">Update Farm</button>}
         </form>
       </div>
     )
