@@ -51,7 +51,7 @@ function App() {
   let farm = {
     name: name,
     city: city,
-    state: state
+    state: farmState
   }
 
   function onNameChange(e) {
@@ -64,6 +64,14 @@ function App() {
   
   function onStateChange(e) {
     setFarmState(e.target.value)
+  }
+
+  function onBedChange(e) {
+    const value = e.target.value
+    setState({
+      ...state,
+      [e.target.name]: value
+    })
   }
 
   function findFarm(e){
@@ -147,10 +155,10 @@ function onDeleteFarm() {
             <Home allFarms={allFarms} onFarmChange={onFarmChange} select={select} selectFarm={selectFarm} allBedComps={allBedComps} selectBedComps={selectBedComps}/>
           </Route>
           <Route path ="/editfarms">
-            <EditFarms onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onAddFarm={onAddFarm} onDeleteFarm={onDeleteFarm} setAllFarms={setAllFarms} farm={farm} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setFarmState={setFarmState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
+            <EditFarms onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onAddFarm={onAddFarm} onDeleteFarm={onDeleteFarm} setAllFarms={setAllFarms} farm={farm} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} farmState={farmState} setFarmState={setFarmState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
           </Route>
           <Route path ="/editbeds">
-            <EditBeds select={select} selectFarm={selectFarm} allFarms={allFarms} onFarmChange={onFarmChange}/>
+            <EditBeds onBedChange={onBedChange} state={state} setState={setState} select={select} selectFarm={selectFarm} allFarms={allFarms} onFarmChange={onFarmChange}/>
           </Route>
         </Switch>
     </div>
