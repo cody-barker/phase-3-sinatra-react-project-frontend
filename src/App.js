@@ -55,12 +55,13 @@ function App() {
   }
 
   let bed = {
+    farm_id: selectFarm.id,
     sq_ft: state.sqFt,
     in_use: state.inUse,
     crop: state.crop,
     dtm: state.dtm,
     planting_date: state.plantingDate,
-    harvest_date: state.plantingDate + state.dtm
+    harvest_date: "2023-08-15"
   }
 
   function onNameChange(e) {
@@ -86,8 +87,14 @@ function App() {
   function onBedSubmit(e) {
     e.preventDefault()
     fetch('http://localhost:9292/beds', {
-
+      method: "POST",
+      headers: {
+      "Content-Type" : "application/json"
+      },
+      body: JSON.stringify(bed)
     })
+    .then(r => r.json())
+    .then(bed => console.log(bed))
   }
 
   function findFarm(e){

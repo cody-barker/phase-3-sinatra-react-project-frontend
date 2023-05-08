@@ -51,6 +51,7 @@ function EditBeds({onBedSubmit, onBedChange, state, select, selectFarm, allFarms
                     </input>
                 </label>
                 <label/>
+                <button type="submit">Submit Bed</button>
             </form>
         </div>
     )
