@@ -8,16 +8,6 @@ import TableRow from './TableRow'
 
 function App() {
 
-/**
- * APP STRUCTURE
- * 
- * App
- *    Home
- *    Edit Farms
- *      Selector
- *      Farm Form
- */
-
   const [allFarms, setAllFarms] = useState([])
   const [allBeds, setAllBeds] = useState([])
   const [select, setSelect] = useState("All Farms")
