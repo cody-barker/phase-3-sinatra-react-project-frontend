@@ -30,4 +30,5 @@ function onDelete(){
         </tr>
     )
 }
+
 export default TableRow
