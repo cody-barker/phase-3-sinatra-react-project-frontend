@@ -47,7 +47,7 @@ function App() {
     name: name,
     city: city,
     state: state
-}
+  }
 
   function onNameChange(e) {
     setName(e.target.value)
@@ -111,7 +111,7 @@ function App() {
     })
     .then(r =>r.json())
     .then(farm => {
-        setSelectFarm(farm)
+        setSelectFarm({})
         setName(farm.name)
         setCity(farm.city)
         setState(farm.state)
