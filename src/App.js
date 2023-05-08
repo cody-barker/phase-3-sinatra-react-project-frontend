@@ -16,7 +16,16 @@ function App() {
   const [selectBeds, setSelectBeds] = useState([])
   const [name, setName] = useState("")
   const [city, setCity] = useState("")
-  const [state, setState] = useState("")
+  const [farmState, setFarmState] = useState("")
+  // const [sqFt, setSqFt] = useState(null)
+  // const [inUse, setInUse] = useState(true)
+  // const [crop, setCrop] = useState("")
+  // const [dtm, setDTM] = useState(null)
+  // const [plantingDate, setPlantingDate] = useState(null)
+  // const [harvestDate, setHarvestDate] = useState(null)
+  const [state, setState] = React.useState({
+
+  })
 
   useEffect(() => {
     fetch("http://localhost:9292/farms")
@@ -49,7 +58,7 @@ function App() {
   }
   
   function onStateChange(e) {
-    setState(e.target.value)
+    setFarmState(e.target.value)
   }
 
   function findFarm(e){
@@ -64,14 +73,14 @@ function App() {
       setSelectBeds([...allBeds])
       setName("")
       setCity("")
-      setState("")
+      setFarmState("")
     } else {
       setSelect(e.target.value)
       setSelectFarm(findFarm(e))
       setSelectBeds([...allBeds].filter(bed => e.target.value === bed.farm.name))
       setName(findFarm(e).name)
       setCity(findFarm(e).city)
-      setState(findFarm(e).state)
+      setFarmState(findFarm(e).state)
     }
   }
 
@@ -105,7 +114,7 @@ function App() {
         setSelectFarm({})
         setName(farm.name)
         setCity(farm.city)
-        setState(farm.state)
+        setFarmState(farm.state)
         setSelect("All Farms")
         setSelectBeds([])
         alert(`${name} updated!`)
@@ -133,10 +142,10 @@ function onDeleteFarm() {
             <Home allFarms={allFarms} onFarmChange={onFarmChange} select={select} selectFarm={selectFarm} allBedComps={allBedComps} selectBedComps={selectBedComps}/>
           </Route>
           <Route path ="/editfarms">
-            <EditFarms onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onAddFarm={onAddFarm} onDeleteFarm={onDeleteFarm} setAllFarms={setAllFarms} farm={farm} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
+            <EditFarms onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onAddFarm={onAddFarm} onDeleteFarm={onDeleteFarm} setAllFarms={setAllFarms} farm={farm} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setFarmState={setFarmState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
           </Route>
           <Route path ="/editbeds">
-            <EditBeds />
+            <EditBeds select={select} selectFarm={selectFarm} allFarms={allFarms} onFarmChange={onFarmChange}/>
           </Route>
         </Switch>
     </div>
