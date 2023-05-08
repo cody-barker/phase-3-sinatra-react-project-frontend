@@ -5,6 +5,7 @@ import NavBar from './NavBar'
 import EditFarms from './EditFarms'
 import React, {useState, useEffect} from 'react'
 import TableRow from './TableRow'
+import EditBeds from './EditBeds'
 
 function App() {
 
@@ -133,6 +134,9 @@ function onDeleteFarm() {
           </Route>
           <Route path ="/editfarms">
             <EditFarms onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onAddFarm={onAddFarm} onDeleteFarm={onDeleteFarm} setAllFarms={setAllFarms} farm={farm} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} state={state} setState={setState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
+          </Route>
+          <Route path ="/editbeds">
+            <EditBeds />
           </Route>
         </Switch>
     </div>

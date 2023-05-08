@@ -1,13 +1,7 @@
-import React, {useState} from 'react'
 import FarmForm from './FarmForm'
 import Selector from './Selector'
 
 function EditFarms({ onAddFarm, onNameChange, onCityChange, onStateChange, onDeleteFarm, onUpdateFarm, select, setSelect, selectBeds, setSelectBeds, selectFarm, setSelectFarm, name, setName, city, setCity, state, setState, allFarms, onFarmChange}) {
-
-
-    //setAllFarms([...allFarms].filter(obj => obj.name != farm.name))
-
-    //REFACTOR FARM FORM
 
     return (
         <div>
