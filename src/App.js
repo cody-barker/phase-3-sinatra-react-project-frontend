@@ -18,14 +18,14 @@ function App() {
  *      Farm Form
  */
 
-  let [allFarms, setAllFarms] = useState([])
-  let [allBeds, setAllBeds] = useState([])
-  let [select, setSelect] = useState("All Farms")
-  let [selectFarm, setSelectFarm] = useState({})
-  let [selectBeds, setSelectBeds] = useState([])
-  let [name, setName] = useState("")
-  let [city, setCity] = useState("")
-  let [state, setState] = useState("")
+  const [allFarms, setAllFarms] = useState([])
+  const [allBeds, setAllBeds] = useState([])
+  const [select, setSelect] = useState("All Farms")
+  const [selectFarm, setSelectFarm] = useState({})
+  const [selectBeds, setSelectBeds] = useState([])
+  const [name, setName] = useState("")
+  const [city, setCity] = useState("")
+  const [state, setState] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:9292/farms")
