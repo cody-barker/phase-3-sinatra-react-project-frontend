@@ -24,7 +24,12 @@ function App() {
   // const [plantingDate, setPlantingDate] = useState(null)
   // const [harvestDate, setHarvestDate] = useState(null)
   const [state, setState] = React.useState({
-
+    sqFt: "",
+    inUse: true,
+    crop: "",
+    dtm: null,
+    plantingDate: null,
+    harvestDate: null
   })
 
   useEffect(() => {
