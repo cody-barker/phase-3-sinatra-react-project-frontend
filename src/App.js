@@ -116,7 +116,7 @@ function App() {
         setCity(farm.city)
         setState(farm.state)
         setSelect("All Farms")
-        setSelectBeds(farm.beds)
+        setSelectBeds([])
         alert(`${name} updated!`)
     })
 }
