@@ -27,9 +27,9 @@ function App() {
     sqFt: "",
     inUse: "Yes",
     crop: "",
-    dtm: undefined,
-    plantingDate: undefined,
-    harvestDate: undefined
+    dtm: "",
+    plantingDate: "",
+    harvestDate: ""
   })
 
   useEffect(() => {
@@ -61,7 +61,7 @@ function App() {
     crop: state.crop,
     dtm: state.dtm,
     planting_date: state.plantingDate,
-    harvest_date: "2023-08-15"
+    harvest_date: state.plantingDate
   }
 
   function onNameChange(e) {
@@ -82,6 +82,7 @@ function App() {
       ...state,
       [e.target.name]: value
     })
+    console.log(state)
   }
 
   function onBedSubmit(e) {

@@ -10,7 +10,7 @@ function EditBeds({onBedSubmit, onBedChange, state, select, selectFarm, allFarms
                 <label>
                     Square Feet
                     <input
-                    type="integer"
+                    type="number"
                     name="sqFt"
                     value={state.sqFt}
                     onChange={onBedChange}>
@@ -51,6 +51,16 @@ function EditBeds({onBedSubmit, onBedChange, state, select, selectFarm, allFarms
                     </input>
                 </label>
                 <label/>
+                <br></br>
+                <label>
+                    Harvest Date
+                    <input
+                    type="date"
+                    name="harvestDate"
+                    value={state.harvestDate}
+                    onChange={onBedChange}>
+                    </input>
+                </label>
                 <button type="submit">Submit Bed</button>
             </form>
         </div>
