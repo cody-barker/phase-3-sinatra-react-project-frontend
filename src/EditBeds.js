@@ -1,7 +1,7 @@
 import React from 'react'
 import Selector from './Selector'
 
-function EditBeds({handleBedChange, state, select, selectFarm, allFarms, onFarmChange}) {
+function EditBeds({onBedChange, state, select, selectFarm, allFarms, onFarmChange}) {
     return(
         <div>
             <h3>Add a Bed</h3>
@@ -13,11 +13,15 @@ function EditBeds({handleBedChange, state, select, selectFarm, allFarms, onFarmC
                     type="integer"
                     name="sqFt"
                     value={state.sqFt}
-                    onChange={handleBedChange}>
+                    onChange={onBedChange}>
                     </input>
                 </label>
-                <label>
-
+                <br></br>
+                <label> In Use
+                <select name="inUse" onChange={onBedChange} value={state.inUse}>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
                 </label>
             </form>
         </div>
