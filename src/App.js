@@ -25,11 +25,11 @@ function App() {
   // const [harvestDate, setHarvestDate] = useState(null)
   const [state, setState] = React.useState({
     sqFt: "",
-    inUse: true,
+    inUse: "Yes",
     crop: "",
-    dtm: null,
-    plantingDate: null,
-    harvestDate: null
+    dtm: undefined,
+    plantingDate: undefined,
+    harvestDate: undefined
   })
 
   useEffect(() => {
@@ -54,6 +54,15 @@ function App() {
     state: farmState
   }
 
+  let bed = {
+    sq_ft: state.sqFt,
+    in_use: state.inUse,
+    crop: state.crop,
+    dtm: state.dtm,
+    planting_date: state.plantingDate,
+    harvest_date: state.plantingDate + state.dtm
+  }
+
   function onNameChange(e) {
     setName(e.target.value)
   }
@@ -71,6 +80,13 @@ function App() {
     setState({
       ...state,
       [e.target.name]: value
+    })
+  }
+
+  function onBedSubmit(e) {
+    e.preventDefault()
+    fetch('http://localhost:9292/beds', {
+
     })
   }
 
@@ -158,7 +174,7 @@ function onDeleteFarm() {
             <EditFarms onNameChange={onNameChange} onCityChange={onCityChange} onStateChange={onStateChange} onAddFarm={onAddFarm} onDeleteFarm={onDeleteFarm} setAllFarms={setAllFarms} farm={farm} onUpdateFarm={onUpdateFarm} onFarmChange={onFarmChange} allFarms={allFarms} name={name} setName={setName} city={city} setCity={setCity} farmState={farmState} setFarmState={setFarmState} select={select} setSelect={setSelect} selectFarm={selectFarm} setSelectFarm={setSelectFarm} selectBeds={selectBeds} setSelectBeds={setSelectBeds}/>
           </Route>
           <Route path ="/editbeds">
-            <EditBeds onBedChange={onBedChange} state={state} setState={setState} select={select} selectFarm={selectFarm} allFarms={allFarms} onFarmChange={onFarmChange}/>
+            <EditBeds onBedSubmit={onBedSubmit} onBedChange={onBedChange} state={state} setState={setState} select={select} selectFarm={selectFarm} allFarms={allFarms} onFarmChange={onFarmChange}/>
           </Route>
         </Switch>
     </div>

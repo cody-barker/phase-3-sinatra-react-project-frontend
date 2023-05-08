@@ -19,7 +19,7 @@ function onDelete(){
         <tr>
             <td>{id}</td>
             <td>{sq_ft}</td>
-            <td>{in_use ? "Yes" : "No"}</td>
+            <td>{in_use}</td>
             <td>{crop}</td>
             <td>{dtm}</td>
             <td>{planting_date}</td>
