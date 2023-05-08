@@ -12,6 +12,18 @@ From the project directory you can run:
 
 Installs all of the ruby gems associated with backend.
 
+### `bundle exec rake db:migrate`
+
+Runs the migrations to setup the database.
+
+### `bundle exec rake db:seed`
+
+Seeds the database tables with sample data.
+
+### `bundle exec rake db:reset`
+
+Drops the database tables and reseeds them with sample data.
+
 ### `bundle exec rake server`
 
 Starts a local server to serve the database.
