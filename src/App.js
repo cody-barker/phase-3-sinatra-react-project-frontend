@@ -26,6 +26,8 @@ function App() {
     harvestDate: ""
   })
 
+  console.log(state)
+
   const {sqFt, inUse, crop, dtm, plantingDate, harvestDate} = state
 
   useEffect(() => {
@@ -81,28 +83,8 @@ function App() {
     console.log(state)
   }
 
-  function onBedSubmit(e) {
-    e.preventDefault()
-    if (select === "All Farms") {
-      alert("Please select a farm for your bed.")
-    } else {
-    fetch('http://localhost:9292/beds', {
-      method: "POST",
-      headers: {
-      "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(bed)
-    })
-    .then(r => r.json())
-    .then(bed => {
-      setAllBeds([...allBeds, bed])
-      setSelectBeds([...selectBeds, bed])
-    })}
-  }
-
   function findFarm(e){
     return [...allFarms].find(farm => e.target.value === farm.name)
-
   }
 
   function onFarmChange(e){
@@ -123,6 +105,25 @@ function App() {
     }
   }
 
+  function onBedSubmit(e) {
+    e.preventDefault()
+    if (select === "All Farms") {
+      alert("Please select a farm for your bed.")
+    } else {
+    fetch('http://localhost:9292/beds', {
+      method: "POST",
+      headers: {
+      "Content-Type" : "application/json"
+      },
+      body: JSON.stringify(bed)
+    })
+    .then(r => r.json())
+    .then(bed => {
+      setAllBeds([...allBeds, bed])
+      setSelectBeds([...selectBeds, bed])
+    })}
+  }
+
   function onAddFarm (e) {
     e.preventDefault()
     fetch('http://localhost:9292/farms', {
@@ -137,7 +138,7 @@ function App() {
       setAllFarms([...allFarms, farm])
       setSelect("All Farms")
       alert(`${farm.name} has been added to the Farm Tracker.`)})
-}
+  }
 
   function onUpdateFarm(e) {
     e.preventDefault()
@@ -158,20 +159,20 @@ function App() {
         setSelectBeds([])
         alert(`${name} updated!`)
     })
-}
+  }
 
 function onDeleteFarm() {
   fetch(`http://localhost:9292/farms/${selectFarm.id}`, {
       method: "DELETE"
-  })
-  .then(r => r.json())
-  .then(farm => {
-        setAllFarms([...allFarms].filter(obj => obj.id != farm.id))
-        setSelectFarm({})
-        setSelect("All Farms")
-        alert(`${farm.name} removed from Farm Tracker.`)
-  })
-}
+    })
+    .then(r => r.json())
+    .then(farm => {
+          setAllFarms([...allFarms].filter(obj => obj.id != farm.id))
+          setSelectFarm({})
+          setSelect("All Farms")
+          alert(`${farm.name} removed from Farm Tracker.`)
+    })
+  }
 
   return (
     <div className = "app">
