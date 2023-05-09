@@ -26,8 +26,6 @@ function App() {
     harvestDate: ""
   })
 
-  console.log(state)
-
   const {sqFt, inUse, crop, dtm, plantingDate, harvestDate} = state
 
   useEffect(() => {
@@ -74,15 +72,6 @@ function App() {
     setFarmState(e.target.value)
   }
 
-  function onBedChange(e) {
-    const value = e.target.value
-    setState({
-      ...state,
-      [e.target.name]: value
-    })
-    console.log(state)
-  }
-
   function findFarm(e){
     return [...allFarms].find(farm => e.target.value === farm.name)
   }
@@ -103,6 +92,15 @@ function App() {
       setCity(findFarm(e).city)
       setFarmState(findFarm(e).state)
     }
+  }
+
+  function onBedChange(e) {
+    const value = e.target.value
+    setState({
+      ...state,
+      [e.target.name]: value
+    })
+    console.log(state)
   }
 
   function onBedSubmit(e) {

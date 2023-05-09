@@ -5,7 +5,9 @@ function EditBeds({onBedSubmit, onBedChange, state, select, selectFarm, allFarms
     return(
         <div>
             <h3>Add a Bed</h3>
+            <label> Select a Farm
             <Selector select={select} selectFarm={selectFarm} allFarms={allFarms} onFarmChange={onFarmChange}/>
+            </label>
             <form onSubmit={onBedSubmit}>
                 <label>
                     Square Feet
