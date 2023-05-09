@@ -151,7 +151,7 @@ function App() {
     })
     .then(r =>r.json())
     .then(farm => {
-        setSelectFarm({})
+        setSelectFarm(farm)
         setName(farm.name)
         setCity(farm.city)
         setFarmState(farm.state)
