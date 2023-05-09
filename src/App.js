@@ -95,7 +95,11 @@ function App() {
       body: JSON.stringify(bed)
     })
     .then(r => r.json())
-    .then(bed => console.log(bed))
+    .then(bed => {
+      console.log(bed)
+      setAllBeds([...allBeds, bed])
+      setSelectBeds([...selectBeds, bed])
+    })
   }
 
   function findFarm(e){
