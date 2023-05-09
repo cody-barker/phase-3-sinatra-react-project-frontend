@@ -7,8 +7,6 @@ import React, {useState, useEffect} from 'react'
 import TableRow from './TableRow'
 import EditBeds from './EditBeds'
 
-//revert
-
 function App() {
 
   const [allFarms, setAllFarms] = useState([])
@@ -19,13 +17,7 @@ function App() {
   const [name, setName] = useState("")
   const [city, setCity] = useState("")
   const [farmState, setFarmState] = useState("")
-  // const [sqFt, setSqFt] = useState(null)
-  // const [inUse, setInUse] = useState(true)
-  // const [crop, setCrop] = useState("")
-  // const [dtm, setDTM] = useState(null)
-  // const [plantingDate, setPlantingDate] = useState(null)
-  // const [harvestDate, setHarvestDate] = useState(null)
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     sqFt: "",
     inUse: "Yes",
     crop: "",
@@ -33,6 +25,8 @@ function App() {
     plantingDate: "",
     harvestDate: ""
   })
+
+  const {sqFt, inUse, crop, dtm, plantingDate, harvestDate} = state
 
   useEffect(() => {
     fetch("http://localhost:9292/farms")
@@ -58,12 +52,12 @@ function App() {
 
   let bed = {
     farm_id: selectFarm.id,
-    sq_ft: state.sqFt,
-    in_use: state.inUse,
-    crop: state.crop,
-    dtm: state.dtm,
-    planting_date: state.plantingDate,
-    harvest_date: state.plantingDate
+    sq_ft: sqFt,
+    in_use: inUse,
+    crop: crop,
+    dtm: dtm,
+    planting_date: plantingDate,
+    harvest_date: harvestDate
   }
 
   function onNameChange(e) {
@@ -89,6 +83,9 @@ function App() {
 
   function onBedSubmit(e) {
     e.preventDefault()
+    if (select === "All Farms") {
+      alert("Please select a farm for your bed.")
+    } else {
     fetch('http://localhost:9292/beds', {
       method: "POST",
       headers: {
@@ -98,10 +95,9 @@ function App() {
     })
     .then(r => r.json())
     .then(bed => {
-      console.log(bed)
       setAllBeds([...allBeds, bed])
       setSelectBeds([...selectBeds, bed])
-    })
+    })}
   }
 
   function findFarm(e){
